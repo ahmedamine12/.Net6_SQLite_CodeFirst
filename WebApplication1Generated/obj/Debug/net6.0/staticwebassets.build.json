@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "3YbzJoSkonCz9iP+oQiQGxsb68HA+Pmy5bc99MrJ/30=",
+  "Hash": "2RAqTFPKY6lWC5BV4uTDTwiVCLlQDUSKlZn5/Xaky44=",
   "Source": "WebApplication1Generated",
   "BasePath": "_content/WebApplication1Generated",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/favicon.ico"
+    },
+    {
+      "Identity": "/home/bouricha/Documents/TPs__.NET/WebApplication1Generated/WebApplication1Generated/wwwroot/images/982bffe4-4ec8-4f47-9ddf-8dbe1ac0f34a.jpeg",
+      "SourceId": "WebApplication1Generated",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/bouricha/Documents/TPs__.NET/WebApplication1Generated/WebApplication1Generated/wwwroot/",
+      "BasePath": "_content/WebApplication1Generated",
+      "RelativePath": "images/982bffe4-4ec8-4f47-9ddf-8dbe1ac0f34a.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/982bffe4-4ec8-4f47-9ddf-8dbe1ac0f34a.jpeg"
     },
     {
       "Identity": "/home/bouricha/Documents/TPs__.NET/WebApplication1Generated/WebApplication1Generated/wwwroot/js/site.js",

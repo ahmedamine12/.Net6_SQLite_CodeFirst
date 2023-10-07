@@ -1,0 +1,59 @@
+@page
+@model WebApplication1Generated.Pages.Produit.IndexModel
+
+@{
+    ViewData["Title"] = "Products";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Products</h1>
+
+<form method="get" class="mb-4">
+    <div class="form-row align-items-center">
+        <div class="col-auto">
+            <label class="sr-only" for="SearchString">Search</label>
+            <input type="text" class="form-control" id="SearchString" asp-for="SearchString" placeholder="Search products...">
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </div>
+</form>
+
+<p class="mb-4">
+    <a asp-page="Create" class="btn btn-primary">Add New Product</a>
+</p>
+
+<div class="row">
+    @foreach (var item in Model.Produit) {
+        <div class="col-md-3 mb-4">
+            <div class="card">
+                @if (!string.IsNullOrEmpty(item.ImageUrl))
+                {
+                    <img class="card-img-top" src="@item.ImageUrl" alt="@item.Nom's Image" /> 
+                }
+                else
+                {
+                    <div class="card-img-top bg-light text-center py-4">
+                        <span>No image available</span>
+                    </div>
+                }
+                <div class="card-body">
+                    <h5 class="card-title">@item.Nom</h5>
+                    <p class="card-text">@item.Description</p>
+                    <div>
+                        <a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Edit</a>
+                        <a asp-page="./Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Details</a>
+                        <a asp-page="./Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    @if (!Model.Produit.Any())
+    {
+        <div class="col-12">
+            <p class="text-muted">Aucun produit trouvé avec le nom donné.</p>
+        </div>
+    }
+</div>

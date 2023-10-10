@@ -15,6 +15,26 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /home/bouricha/Documents/TPs__.NET/WebApplication1Generated/WebApplication1Generated
 build_property._RazorSourceGeneratorDebug = 
 
+[/home/bouricha/Documents/TPs__.NET/WebApplication1Generated/WebApplication1Generated/Pages/Categorie/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ2F0ZWdvcmllL0NyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bouricha/Documents/TPs__.NET/WebApplication1Generated/WebApplication1Generated/Pages/Categorie/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ2F0ZWdvcmllL0RlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bouricha/Documents/TPs__.NET/WebApplication1Generated/WebApplication1Generated/Pages/Categorie/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ2F0ZWdvcmllL0RldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bouricha/Documents/TPs__.NET/WebApplication1Generated/WebApplication1Generated/Pages/Categorie/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ2F0ZWdvcmllL0VkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/bouricha/Documents/TPs__.NET/WebApplication1Generated/WebApplication1Generated/Pages/Categorie/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ2F0ZWdvcmllL0luZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/bouricha/Documents/TPs__.NET/WebApplication1Generated/WebApplication1Generated/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

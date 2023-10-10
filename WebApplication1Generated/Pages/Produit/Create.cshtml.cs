@@ -1,5 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Http;
@@ -18,14 +21,21 @@ namespace WebApplication1Generated.Pages.Produit
             _environment = environment;
         }
 
+        // Liste des catégories pour la liste déroulante
+        public List<Model.Categorie> Categories { get; set; } = new List<Model.Categorie>();
+
         public IActionResult OnGet()
         {
+            // Récupérer toutes les catégories pour la liste déroulante
+            Categories = _context.Categorie.ToList();
             return Page();
         }
 
-        [BindProperty] public Model.Produit Produit { get; set; } = default!;
+        [BindProperty]
+        public Model.Produit Produit { get; set; } = default!;
 
-        [BindProperty] public IFormFile UploadedImage { get; set; }
+        [BindProperty]
+        public IFormFile UploadedImage { get; set; }
         
         public async Task<IActionResult> OnPostAsync()
         {
@@ -49,7 +59,7 @@ namespace WebApplication1Generated.Pages.Produit
                 Console.WriteLine("Processing uploaded image");
 
                 var fileName = Guid.NewGuid().ToString() + Path.GetExtension(UploadedImage.FileName);
-                var filePath = Path.Combine(_environment.WebRootPath, "images", fileName); // Use the WebRootPath
+                var filePath = Path.Combine(_environment.WebRootPath, "images", fileName); 
 
                 Console.WriteLine($"Saving image to: {filePath}");
 
@@ -60,10 +70,9 @@ namespace WebApplication1Generated.Pages.Produit
 
                 Produit.ImageUrl = $"/images/{fileName}";
             }
-            
             else
             {
-                Produit.ImageUrl = string.Empty; // assign a default value or a placeholder image URL if necessary
+                Produit.ImageUrl = string.Empty; // Assign a default value or a placeholder image URL if necessary
             }
             Console.WriteLine("Adding product to context");
             _context.Produits.Add(Produit);
@@ -83,10 +92,5 @@ namespace WebApplication1Generated.Pages.Produit
             Console.WriteLine("OnPostAsync finished");
             return RedirectToPage("./Index");
         }
-
-
-
-
     }
-    
 }

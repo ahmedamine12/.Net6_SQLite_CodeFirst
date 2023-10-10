@@ -15,4 +15,6 @@ public class AppContextDB : DbContext
         public DbSet<Etudiant> Etudiant { get; set; } = default!;
         
         public DbSet<Produit> Produits { get; set; }
+        
+        public DbSet<Categorie> Categorie { get; set; }
     }

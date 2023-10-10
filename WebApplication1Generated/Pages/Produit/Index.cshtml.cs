@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering; // Added for SelectList
 using WebApplication1Generated.Model;
 
 namespace WebApplication1Generated.Pages.Produit
@@ -21,6 +22,10 @@ namespace WebApplication1Generated.Pages.Produit
         public IList<Model.Produit> Produit { get;set; } = default!;
         [BindProperty(SupportsGet = true)] 
         public string SearchString { get; set; }
+        
+        public SelectList Categories { get; set; } // Dropdown list for categories
+        [BindProperty(SupportsGet = true)] 
+        public int? CategoryID { get; set; } // To filter by category
 
         public async Task OnGetAsync()
         {
@@ -29,10 +34,15 @@ namespace WebApplication1Generated.Pages.Produit
             if (!string.IsNullOrEmpty(SearchString))
             {
                 productQuery = productQuery.Where(p => p.Nom.Contains(SearchString));
-            }w
+            }
 
+            if (CategoryID.HasValue)
+            {
+                productQuery = productQuery.Where(p => p.CategorieId == CategoryID.Value);
+            }
+
+            Categories = new SelectList(await _context.Categorie.ToListAsync(), "Id", "Nom");
             Produit = await productQuery.ToListAsync();
         }
-
-        }
     }
+}

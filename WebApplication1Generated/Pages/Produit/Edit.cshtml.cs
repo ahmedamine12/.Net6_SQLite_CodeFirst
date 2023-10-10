@@ -1,76 +1,91 @@
 using System;
-using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using WebApplication1Generated.Model;
 
 namespace WebApplication1Generated.Pages.Produit
 {
-    public class EditModel : PageModel
+    public class UpdateModel : PageModel
     {
         private readonly AppContextDB _context;
+        private readonly IWebHostEnvironment _environment;
 
-        public EditModel(AppContextDB context)
+        public UpdateModel(AppContextDB context, IWebHostEnvironment environment)
         {
             _context = context;
+            _environment = environment;
         }
 
         [BindProperty]
-        public Model.Produit Produit { get; set; } = default!;
+        public Model.Produit Produit { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        [BindProperty]
+        public IFormFile UploadedImage { get; set; }
+        public List<SelectListItem> Categories { get; set; } = new List<SelectListItem>();
+
+        public void OnGet(int id)
         {
-            if (id == null || _context.Produits == null)
+            Produit = _context.Produits.FirstOrDefault(p => p.Id == id);
+            Categories = _context.Categorie.Select(c => new SelectListItem
             {
-                return NotFound();
-            }
-
-            var produit =  await _context.Produits.FirstOrDefaultAsync(m => m.Id == id);
-            if (produit == null)
-            {
-                return NotFound();
-            }
-            Produit = produit;
-            return Page();
+                Value = c.Id.ToString(),
+                Text = c.Nom
+            }).ToList();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see https://aka.ms/RazorPagesCRUD.
+
+       
+
         public async Task<IActionResult> OnPostAsync()
         {
+            ModelState.Remove("Produit.ImageUrl");
+            Console.WriteLine("OnPostAsync started");
+            
             if (!ModelState.IsValid)
             {
+                foreach (var modelError in ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    Console.WriteLine(modelError.ErrorMessage);
+                }
                 return Page();
             }
 
-            _context.Attach(Produit).State = EntityState.Modified;
+            var existingProduit = _context.Produits.FirstOrDefault(p => p.Id == Produit.Id);
+            
+            if (existingProduit == null)
+            {
+                return NotFound("Product not found");
+            }
 
-            try
+            existingProduit.Nom = Produit.Nom;
+            existingProduit.Description = Produit.Description;
+            existingProduit.CategorieId = Produit.CategorieId;
+
+            if (UploadedImage != null)
             {
-                await _context.SaveChangesAsync();
+                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(UploadedImage.FileName);
+                var filePath = Path.Combine(_environment.WebRootPath, "images", fileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await UploadedImage.CopyToAsync(stream);
+                }
+
+                existingProduit.ImageUrl = $"/images/{fileName}";
             }
-            catch (DbUpdateConcurrencyException)
+            else
             {
-                if (!ProduitExists(Produit.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                Produit.ImageUrl = string.Empty; 
             }
+
+            _context.Produits.Update(existingProduit);
+            await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
-        }
-
-        private bool ProduitExists(int id)
-        {
-          return (_context.Produits?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace WebApplication1Generated.Migrations
 {
     [DbContext(typeof(AppContextDB))]
-    [Migration("20231003083230_AddProduitEntity")]
-    partial class AddProduitEntity
+    [Migration("20231010082912_AddCategorieTable")]
+    partial class AddCategorieTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -36,10 +36,28 @@ namespace WebApplication1Generated.Migrations
                     b.ToTable("Etudiant");
                 });
 
+            modelBuilder.Entity("WebApplication1Generated.Model.Categorie", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Nom")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categorie");
+                });
+
             modelBuilder.Entity("WebApplication1Generated.Model.Produit", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("CategorieId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Description")
@@ -56,7 +74,25 @@ namespace WebApplication1Generated.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CategorieId");
+
                     b.ToTable("Produits");
+                });
+
+            modelBuilder.Entity("WebApplication1Generated.Model.Produit", b =>
+                {
+                    b.HasOne("WebApplication1Generated.Model.Categorie", "Categorie")
+                        .WithMany("Produits")
+                        .HasForeignKey("CategorieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Categorie");
+                });
+
+            modelBuilder.Entity("WebApplication1Generated.Model.Categorie", b =>
+                {
+                    b.Navigation("Produits");
                 });
 #pragma warning restore 612, 618
         }

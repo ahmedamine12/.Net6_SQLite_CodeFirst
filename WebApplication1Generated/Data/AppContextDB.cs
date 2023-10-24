@@ -17,4 +17,8 @@ public class AppContextDB : DbContext
         public DbSet<Produit> Produits { get; set; }
         
         public DbSet<Categorie> Categorie { get; set; }
+        public DbSet<Cart> Cart { get; set; }
+        public DbSet<CartItem> CartItems { get; set; }
+        
+        
     }

@@ -18,6 +18,7 @@ namespace WebApplication1Generated.Pages.Produit
         {
             _context = context;
             _environment = environment;
+            
         }
 
         [BindProperty]
@@ -38,7 +39,8 @@ namespace WebApplication1Generated.Pages.Produit
         }
 
 
-       
+    
+
 
         public async Task<IActionResult> OnPostAsync()
         {

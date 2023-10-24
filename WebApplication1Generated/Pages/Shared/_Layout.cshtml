@@ -33,9 +33,9 @@
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-page="/Produit/Index">Espace Produit</a>
                     </li>
-                      <li class="nav-item">
-                                             <a class="nav-link text-dark" asp-area="" asp-page="/Categorie/Index">Espace Categorie</a>
-                                             </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-page="/Categorie/Index">Espace Categorie</a>
+                    </li>
                     
                 </ul>
             </div>
@@ -54,10 +54,16 @@
     </div>
 </footer>
 
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="~/js/site.js" asp-append-version="true"></script>
+
+
+
 
 @await RenderSectionAsync("Scripts", required: false)
+<script src="~/js/site.js" asp-append-version="true"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

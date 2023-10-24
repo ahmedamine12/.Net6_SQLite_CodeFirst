@@ -6,6 +6,8 @@ namespace WebApplication1Generated.Model
         public string Nom { get; set; }
         public string Description { get; set; }
         public string ImageUrl { get; set; }
+        //public double price { get; set; }
+        
 
         // Propriétés pour la relation avec Categorie
         public int? CategorieId { get; set; }// Clé étrangère

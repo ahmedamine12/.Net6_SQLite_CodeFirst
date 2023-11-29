@@ -34,6 +34,16 @@ namespace WebApplication1Generated.Pages.Produit
 
         public async Task OnGetAsync()
         {
+            if (Request.Query.ContainsKey("SearchString"))
+            {
+                SearchString = Request.Query["SearchString"];
+            }
+
+            if (Request.Query.ContainsKey("CategoryID") && int.TryParse(Request.Query["CategoryID"], out int categoryId))
+            {
+                CategoryID = categoryId;
+            }
+
             PopulateProducts();
         }
 
@@ -90,21 +100,34 @@ namespace WebApplication1Generated.Pages.Produit
         // Peuple la liste des produits à afficher.
         private void PopulateProducts()
         {
-            IQueryable<Model.Produit> productQuery = _context.Produits;
-
-            if (!string.IsNullOrEmpty(SearchString))
+            try
             {
-                productQuery = productQuery.Where(p => p.Nom.Contains(SearchString));
-            }
+                IQueryable<Model.Produit> productQuery = _context.Produits;
 
-            if (CategoryID.HasValue)
+                // Debug statements
+                Console.WriteLine($"SearchString: {SearchString}");
+                Console.WriteLine($"CategoryID: {CategoryID}");
+
+                if (!string.IsNullOrEmpty(SearchString))
+                {
+                    productQuery = productQuery.Where(p => p.Nom.Contains(SearchString));
+                }
+
+                if (CategoryID.HasValue)
+                {
+                    productQuery = productQuery.Where(p => p.CategorieId == CategoryID.Value);
+                }
+
+                Categories = new SelectList(_context.Categorie.ToList(), "Id", "Nom");
+                Produit = productQuery.ToList();
+            }
+            catch (Exception ex)
             {
-                productQuery = productQuery.Where(p => p.CategorieId == CategoryID.Value);
+                Console.WriteLine($"Error in PopulateProducts: {ex.Message}");
             }
-
-            Categories = new SelectList(_context.Categorie.ToList(), "Id", "Nom");
-            Produit = productQuery.ToList();
         }
+
+
 
         // Classe pour représenter un élément du panier.
         public class SessionCartItem

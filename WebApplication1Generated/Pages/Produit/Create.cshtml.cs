@@ -1,9 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using WebApplication1Generated.Controllers; // Import your controller namespace
-using WebApplication1Generated.Model;
 
 namespace WebApplication1Generated.Pages.Produit
 {

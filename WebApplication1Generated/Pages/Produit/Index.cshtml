@@ -10,31 +10,30 @@
     <h1 class="text-center">Products</h1>
 
     <!-- Search and Filter Form -->
-    <form method="get" class="mb-4">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="form-group">
-                    <input type="text" class="form-control" id="SearchString" asp-for="SearchString" placeholder="Search products...">
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <select asp-for="CategoryID" asp-items="Model.Categories" class="form-control">
-                        <option value="">All Categories</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <button type="submit" class="btn btn-primary btn-block">Filter</button>
-            </div>
-             <div class="col-md-4">
-             <!-- Cart Button that triggers the modal -->
-             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cartModal">
-                 🛒 Cart (@Model.GetCartItems().Count)
-             </button>
-             </div>
-        </div>
-    </form>
+   <form method="get" class="mb-4">
+       <div class="row">
+           <div class="col-md-4">
+               <div class="form-group">
+                   <input type="text" class="form-control" id="SearchString" name="SearchString" value="@Model.SearchString" placeholder="Search products...">
+               </div>
+           </div>
+           <div class="col-md-4">
+               <div class="form-group">
+                   <select id="CategoryID" name="CategoryID" class="form-control">
+                       <option value="">All Categories</option>
+                       @foreach (var category in Model.Categories)
+                       {
+                           <option value="@category.Value" selected="@category.Value == Model.CategoryID">@category.Text</option>
+                       }
+                   </select>
+               </div>
+           </div>
+           <div class="col-md-4">
+               <button type="submit" class="btn btn-primary btn-block">Filter</button>
+           </div>
+       </div>
+   </form>
+
 
     <!-- Add Product Button -->
     <div class="text-center mb-4">
@@ -87,8 +86,6 @@
         }
     </div>
 
-   
-
     <!-- Cart Modal -->
     <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -109,8 +106,6 @@
                                     @item.Nom
                                 </div>
                              <span class="badge badge-dark badge-pill" style="color: black;">Quantity: @Model.GetCartItemById(item.Id).Quantity</span>
-
-
                             </li>
                         }
                     </ul>
@@ -123,4 +118,4 @@
             </div>
         </div>
     </div>
- </div>
+</div>

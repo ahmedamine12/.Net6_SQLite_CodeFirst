@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "E5En9HoTwodF5x3KBQ+yzwY132qwJikzoN1HPagoyIA=",
+  "Hash": "p7xRjoYdNh6iaz+7HYtGchicPnx+I1T4JeGnArTXV6Q=",
   "Source": "WebApplication1Generated",
   "BasePath": "_content/WebApplication1Generated",
   "Mode": "Default",
@@ -102,6 +102,40 @@
       "OriginalItemSpec": "wwwroot/images/0929f171-8195-4d24-8278-aae0b954767c.jpg"
     },
     {
+      "Identity": "/home/bouricha/Documents/TPs__.NET/WebApplication1Generated/WebApplication1Generated/wwwroot/images/1097f8ba-2936-48e8-833b-121d99fd5718.png",
+      "SourceId": "WebApplication1Generated",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/bouricha/Documents/TPs__.NET/WebApplication1Generated/WebApplication1Generated/wwwroot/",
+      "BasePath": "_content/WebApplication1Generated",
+      "RelativePath": "images/1097f8ba-2936-48e8-833b-121d99fd5718.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/1097f8ba-2936-48e8-833b-121d99fd5718.png"
+    },
+    {
+      "Identity": "/home/bouricha/Documents/TPs__.NET/WebApplication1Generated/WebApplication1Generated/wwwroot/images/1478748f-442f-4212-ba14-088514cd0bc0.png",
+      "SourceId": "WebApplication1Generated",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/bouricha/Documents/TPs__.NET/WebApplication1Generated/WebApplication1Generated/wwwroot/",
+      "BasePath": "_content/WebApplication1Generated",
+      "RelativePath": "images/1478748f-442f-4212-ba14-088514cd0bc0.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/1478748f-442f-4212-ba14-088514cd0bc0.png"
+    },
+    {
       "Identity": "/home/bouricha/Documents/TPs__.NET/WebApplication1Generated/WebApplication1Generated/wwwroot/images/157aad66-fddc-4609-8a5f-90705ee74ab2.jpg",
       "SourceId": "WebApplication1Generated",
       "SourceType": "Discovered",
@@ -151,6 +185,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/images/2d43f4c1-602a-47a2-81b6-e7c7b38c8222.jpeg"
+    },
+    {
+      "Identity": "/home/bouricha/Documents/TPs__.NET/WebApplication1Generated/WebApplication1Generated/wwwroot/images/39be6f4f-22b9-4ce3-8a3d-9ef15f506287.png",
+      "SourceId": "WebApplication1Generated",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/bouricha/Documents/TPs__.NET/WebApplication1Generated/WebApplication1Generated/wwwroot/",
+      "BasePath": "_content/WebApplication1Generated",
+      "RelativePath": "images/39be6f4f-22b9-4ce3-8a3d-9ef15f506287.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/39be6f4f-22b9-4ce3-8a3d-9ef15f506287.png"
     },
     {
       "Identity": "/home/bouricha/Documents/TPs__.NET/WebApplication1Generated/WebApplication1Generated/wwwroot/images/4d961726-0b37-439e-bdf4-d7639df470c4.png",

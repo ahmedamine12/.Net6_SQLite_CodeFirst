@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Http;
 using System;
+using WebApplication1Generated.Controllers;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +19,9 @@ builder.Services.AddSession(options =>
 
 builder.Services.AddDbContext<AppContextDB>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("AppContextDB") ?? throw new InvalidOperationException("Connection string 'AppContextDB' not found.")));
+builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<ProduitController>();
+
 
 var app = builder.Build();
 
@@ -35,6 +40,10 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.UseSession();  // Add this line to enable session
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Produit}/{action=Index}/{id?}");
 
 app.MapRazorPages();
 
